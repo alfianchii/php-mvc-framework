@@ -1,0 +1,17 @@
+{
+	"name": "alfian/mvc-framework",
+	"description": "Some basics of MVC's concept.",
+	"type": "library",
+	"authors": [
+		{
+			"name": "alfianchii",
+			"email": "muhammadalfian217050@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"app\\": "./"
+		}
+	},
+	"require": {}
+}
