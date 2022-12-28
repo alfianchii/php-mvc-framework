@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\{Controller, Request};
+use app\models\RegisterModel;
 
 class AuthController extends Controller
 {
@@ -20,17 +21,36 @@ class AuthController extends Controller
     // [AuthController::class, "register"]
     public function register(Request $request)
     {
+        $registerModel = new RegisterModel();
+
+        if ($request->isPost()) {
+            // Get the inputs from form, then load it
+            $registerModel->loadData($request->getBody());
+
+            // If validation is pass and also created an account, then success
+            if ($registerModel->validate() && $registerModel->register()) {
+                return "Success";
+            }
+
+            /* DEBUGGING */
+            echo '<pre>';
+            var_dump($registerModel->errors);
+            echo '</pre>';
+            exit;
+            /* DEBUGGING */
+
+            // Return layouts + views + errors
+            return $this->render("register", [
+                "model" => $registerModel
+            ]);
+        }
+
         // Set auth layout
         $this->setLayout("auth");
 
-        if ($request->isPost()) {
-            // Get data from forms
-            $body = $request->getBody();
-
-            return "Handle submitted data.";
-        }
-
         // Return layouts + views
-        return $this->render("register");
+        return $this->render("register", [
+            "model" => $registerModel
+        ]);
     }
 }
