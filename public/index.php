@@ -1,13 +1,26 @@
 <?php
-// Include autoload
-require_once __DIR__ . "/../vendor/autoload.php";
-
 // Importing
 use app\controllers\{SiteController, AuthController};
 use app\core\Application;
 
+// Include autoload
+require_once __DIR__ . "/../vendor/autoload.php";
+
+// Import phpdotenv Package
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+// Configuration for the databas
+$config = [
+    "db" => [
+        "dsn" => $_ENV["DB_DSN"],
+        "user" => $_ENV["DB_USER"],
+        "password" => $_ENV["DB_PASSWORD"],
+    ]
+];
+
 // App instance
-$app = new Application(dirname(__DIR__));
+$app = new Application(dirname(__DIR__), $config);
 
 // Routes
 $app->router->get('/', [SiteController::class, "home"]);
