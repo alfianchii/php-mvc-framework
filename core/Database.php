@@ -47,9 +47,9 @@ class Database
 
             // Take the file name and alter it into an instance of class, then run the up() method
             $className = pathinfo($migration, PATHINFO_FILENAME);
-            $instace = new $className();
+            $instance = new $className();
             $this->log("Trying to apply the '$migration' migration!");
-            $instace->up();
+            $instance->up();
             $this->log("'$migration' was applied!\n");
             $newMigrations[] = $migration;
         }
