@@ -9,4 +9,10 @@ class Response
     {
         http_response_code($code);
     }
+
+    // Redirect the page
+    public function redirect(string $string)
+    {
+        header("Location: $string");
+    }
 }
