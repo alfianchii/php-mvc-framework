@@ -44,9 +44,9 @@ class Session
         // Iterate over the flash messages
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
         // Note: & symbol as reference
-        foreach ($flashMessages as $key => &$flashMessage) {
+        foreach ($flashMessages as $key => $flashMessage) {
             if ($flashMessage["remove"]) {
-                unset($flashMessage[$key]);
+                unset($flashMessages[$key]);
             }
         }
 
