@@ -60,8 +60,9 @@ class Router
 
         // If found, run the callback
         // $this->request argument is for controller's methods
-        // such as handleContact() in SiteController.php
-        return call_user_func($callback, $this->request);
+        // such as handleContact() in SiteController.php.
+        // And also the $this->response just like the $this->request
+        return call_user_func($callback, $this->request, $this->response);
     }
 
     // VIEWS

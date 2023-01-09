@@ -66,25 +66,25 @@ abstract class Model
                     If you don't fill out the firstname, for example, then
                     the firstname will be at $attribute.
                     */
-                    $this->addError($attribute, self::RULE_REQUIRED);
+                    $this->addErrorForRule($attribute, self::RULE_REQUIRED);
                 }
 
                 // VALIDATE THE EMAIL: if not the valid email ...
                 if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     // Add an error at attribute of email
-                    $this->addError($attribute, self::RULE_EMAIL);
+                    $this->addErrorForRule($attribute, self::RULE_EMAIL);
                 }
 
                 // VALIDATE THE MIN (minimum value): if the $value is less than $min's value ...
                 if ($ruleName === self::RULE_MIN && strlen($value) < $rule["min"]) {
                     // Then ddd an error
-                    $this->addError($attribute, self::RULE_MIN, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MIN, $rule);
                 }
 
                 // VALIDATE THE MAX (maximum value): if the $value is more than $max's value ...
                 if ($ruleName === self::RULE_MAX && strlen($value) > $rule["max"]) {
                     // Then ddd an error with passing the whole $rule
-                    $this->addError($attribute, self::RULE_MAX, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MAX, $rule);
                 }
 
                 // VALIDATE THE MATCH: if the $value doesn't equal to password ...
@@ -100,7 +100,7 @@ abstract class Model
 
                     // Get the labels for "password" into "Password"
                     $rule["match"] = $this->getLabel($rule["match"]);
-                    $this->addError($attribute, self::RULE_MATCH, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MATCH, $rule);
                 }
 
                 // VALIDATE UNIQUE:
@@ -115,7 +115,7 @@ abstract class Model
 
                     // If email was exists ...
                     if ($record) {
-                        $this->addError($attribute, self::RULE_UNIQUE, ["field" => $this->getLabel($attribute)]);
+                        $this->addErrorForRule($attribute, self::RULE_UNIQUE, ["field" => $this->getLabel($attribute)]);
                     }
                 }
             }
@@ -126,7 +126,7 @@ abstract class Model
     }
 
     // For add some error (needs $attribute and their $rule)
-    public function addError(string $attribute, string $rule, $params = [])
+    private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         // TAKE THE ERROR MESSAGE(s)
         $message = $this->errorMessages()[$rule] ?? "";
@@ -136,6 +136,13 @@ abstract class Model
             $message = str_replace("{{$key}}", $value, $message);
         }
 
+        // Add the error(s)
+        $this->errors[$attribute][] = $message;
+    }
+
+    // Just add an error without rule
+    public function addError(string $attribute, string $message)
+    {
         // Add the error(s)
         $this->errors[$attribute][] = $message;
     }
