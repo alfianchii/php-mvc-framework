@@ -8,10 +8,11 @@ class Application
     public static string $ROOT_DIR;
     public static Application $app;
     public string $userClass;
+    public string $layout = "main";
     public Router $router;
     public Request $request;
     public Response $response;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Database $db;
     public Session $session;
     public ?DbModel $user;
@@ -47,7 +48,16 @@ class Application
     // Running the application
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Exception $e) {
+            // Set the status code
+            $this->response->setStatusCode($e->getCode());
+            // Render view of error
+            echo $this->router->renderView("_error", [
+                "exception" => $e
+            ]);
+        }
     }
 
     // Getter and setter

@@ -3,10 +3,17 @@
 namespace app\controllers;
 
 use app\core\{Application, Controller, Request, Response};
+use app\core\middlewares\AuthMiddleware;
 use app\models\{User, LoginForm};
 
 class AuthController extends Controller
 {
+    // Restrict a page with middlewares
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(["profile"]));
+    }
+
     /* Controller's methods */
     // [AuthController::class, "login"]
     public function login(Request $request, Response $response)
@@ -69,5 +76,10 @@ class AuthController extends Controller
     {
         Application::$app->logout();
         $response->redirect("/");
+    }
+
+    public function profile()
+    {
+        return $this->render('profile');
     }
 }

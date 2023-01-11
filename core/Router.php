@@ -2,6 +2,8 @@
 // The namespace
 namespace app\core;
 
+use app\core\exceptions\NotFoundException;
+
 class Router
 {
     // Properties
@@ -41,9 +43,8 @@ class Router
 
         // If false, return not found
         if (!$callback) {
-            // Throw the status code and visit _404.php
-            $this->response->setStatusCode(404);
-            return $this->renderView("_404");
+            // Throw the NotFoundException
+            throw new NotFoundException();
             // return $this->renderContent("<h1>Not found</h1>");
         }
 
@@ -54,8 +55,20 @@ class Router
 
         // If array, instance it [controller, method]
         if (is_array($callback)) {
-            Application::$app->controller = new $callback[0]();
-            $callback[0] = Application::$app->controller;
+            // Hey, the controller variable is an instance of Controller class.
+            /** @var \app\core\Controller $controller */
+
+            // Instance
+            $controller = new $callback[0]();
+            Application::$app->controller = $controller;
+            // Take the action
+            $controller->action = $callback[1];
+            $callback[0] = $controller;
+
+            // Iterates the middlewares, and execute it
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute();
+            }
         }
 
         // If found, run the callback
@@ -88,7 +101,13 @@ class Router
     // Render layouts
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        // By default, the layout will be "main"
+        $layout = Application::$app->layout;
+
+        // But if the controller was exists, take the layout from the controller
+        if (Application::$app->controller) {
+            $layout = Application::$app->controller->layout;
+        }
 
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";

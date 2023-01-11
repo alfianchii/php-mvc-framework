@@ -2,10 +2,20 @@
 
 namespace app\core;
 
+use app\core\middlewares\BaseMiddleware;
+
 class Controller
 {
     // Whether the layout is auth.php or main.php (default)
     public string $layout = "main";
+    // For keeps the middleware
+    public string $action = '';
+
+    // This is not just an array, but it's an array of Middleware's class.
+    /**
+     * @var \app\core\middlewares\BaseMiddleware[]
+     */
+    protected array $middlewares = [];
 
     // Set the $layout property
     public function setLayout($layout)
@@ -17,5 +27,17 @@ class Controller
     public function render($view, $params = [])
     {
         return Application::$app->router->renderView($view, $params);
+    }
+
+    // Register the middleware
+    public function registerMiddleware(BaseMiddleware $middleware)
+    {
+        $this->middlewares[] = $middleware;
+    }
+
+    // Getter middlewares
+    public function getMiddlewares(): array
+    {
+        return $this->middlewares;
     }
 }
