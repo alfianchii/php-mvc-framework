@@ -17,7 +17,7 @@ class Application
     public ?Controller $controller = null;
     public Database $db;
     public Session $session;
-    public ?DbModel $user;
+    public ?UserModel $user;
     public View $view;
 
     public function __construct($rootPath, array $config)
