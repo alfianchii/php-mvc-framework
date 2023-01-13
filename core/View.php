@@ -4,6 +4,8 @@ namespace app\core;
 
 class View
 {
+    public string $title = "";
+
     // VIEWS
     // Render layouts + views
     public function renderView($view, $params = [])
