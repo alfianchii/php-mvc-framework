@@ -2,7 +2,8 @@
 
 namespace app\controllers;
 
-use app\core\{Controller, Request};
+use app\core\{Application, Controller, Request, Response};
+use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -23,14 +24,5 @@ class SiteController extends Controller
     {
         // Return layouts + views
         return $this->render("contact");
-    }
-
-    // [SiteController::class, "handleContact"]
-    public function handleContact(Request $request)
-    {
-        // Get data from forms
-        $body = $request->getBody();
-
-        return "Handling submitted data.";
     }
 }
