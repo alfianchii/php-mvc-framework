@@ -2,6 +2,8 @@
 // The namespace
 namespace app\core;
 
+use app\core\db\Database;
+
 class Application
 {
     // Properties
@@ -16,6 +18,7 @@ class Application
     public Database $db;
     public Session $session;
     public ?DbModel $user;
+    public View $view;
 
     public function __construct($rootPath, array $config)
     {
@@ -28,6 +31,7 @@ class Application
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config["db"]);
         $this->session = new Session();
+        $this->view = new View();
 
         /*
             Noting, we should never use any class inside the core which is outside the core.
@@ -54,7 +58,7 @@ class Application
             // Set the status code
             $this->response->setStatusCode($e->getCode());
             // Render view of error
-            echo $this->router->renderView("_error", [
+            echo $this->view->renderView("_error", [
                 "exception" => $e
             ]);
         }
@@ -72,7 +76,7 @@ class Application
     }
 
     // Save user's login into session (based on id)
-    public function login(DbModel $user)
+    public function login(UserModel $user)
     {
         // Set user
         $this->user = $user;
