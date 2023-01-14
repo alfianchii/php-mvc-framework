@@ -5,6 +5,7 @@
 
 use app\core\form\TextareaField;
 
+// Set the title of contact page
 $this->title = "Contact";
 
 ?>
