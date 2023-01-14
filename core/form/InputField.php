@@ -31,12 +31,13 @@ class InputField extends BaseField
         return $this;
     }
 
-    // Set render to input field
+    // Set render to input
     public function renderInput(): string
     {
         return sprintf(
-            '<input type="%s" name="%s" value="%s" class="form-control %s">',
+            '<input type="%s" name="%s" id="%s" value="%s" class="form-control %s">',
             $this->type,
+            $this->attribute,
             $this->attribute,
             $this->model->{$this->attribute},
             $this->model->hasError($this->attribute) ? "is-invalid" : "",
