@@ -25,7 +25,7 @@ class ContactForm extends Model
     public function labels(): array
     {
         return [
-            "subject" => "Enter Your Subject",
+            "subject" => "Your Subject",
             "email" => "Your Email",
             "body" => "Body",
         ];
