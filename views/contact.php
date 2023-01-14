@@ -11,7 +11,7 @@ $this->title = "Contact";
 
 ?>
 
-<h1>Contact us</h1>
+<h1 class="mb-3">Contact us</h1>
 
 <?php $form = \app\core\form\Form::begin("", "POST") ?>
 
