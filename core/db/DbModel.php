@@ -6,13 +6,13 @@ use app\core\{Application, Model};
 
 abstract class DbModel extends Model
 {
-    // Take the table's name
+    // Take the table's name of a model
     abstract public static function tableName(): string;
 
-    // Take the attributes
+    // Take the attributes of a model
     abstract public function attributes(): array;
 
-    // Take the primary key
+    // Take the primary key of a model
     abstract public static function primaryKey(): string;
 
     // Insert attributes to the tableName
@@ -34,7 +34,7 @@ abstract class DbModel extends Model
         return true;
     }
 
-    // Search one data
+    // Search one data of a table
     public static function findOne($where) // [email => alfianchii@example.com, firstname => alfianchii]
     {
         // Because the tableName() was abstract, therefore use static keyword
@@ -45,10 +45,12 @@ abstract class DbModel extends Model
         $sql = implode("AND ", array_map(fn ($attr) => "$attr = :$attr", $attributes));
         $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
 
+        // Binding the values
         foreach ($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }
 
+        // Execute the SQL syntax
         $statement->execute();
 
         // Return instance of, for example, the user class
