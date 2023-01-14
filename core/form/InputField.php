@@ -6,16 +6,18 @@ use app\core\Model;
 
 class InputField extends BaseField
 {
-    // Const(s)
+    // Consts
     public const TYPE_TEXT = "text";
     public const TYPE_PASSWORD = "password";
     public const TYPE_NUMBER = "number";
 
-    // Properties
+    // Property
     public string $type;
 
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct(Model $model, string $attribute)
     {
+        // Set type and run the parent's constructor
         $this->type = self::TYPE_TEXT;
         parent::__construct($model, $attribute);
     }
@@ -23,12 +25,13 @@ class InputField extends BaseField
     // Set type to password
     public function passwordField()
     {
+        // Set type to password
         $this->type = self::TYPE_PASSWORD;
         // In register.php, you would like to change the type
         return $this;
     }
 
-    // Set render
+    // Set render to input field
     public function renderInput(): string
     {
         return sprintf(
