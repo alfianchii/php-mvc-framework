@@ -11,6 +11,7 @@ class Router
     public Request $request;
     public Response $response;
 
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct(Request $request, Response $response)
     {
         // Fill out the properties
@@ -18,16 +19,13 @@ class Router
         $this->response = $response;
     }
 
-    /*
-    Methods
-    */
-    // Set get routes
+    // Set "get" routes
     public function get($path, $callback)
     {
         $this->routes["get"][$path] = $callback;
     }
 
-    // Set post routes
+    // Set "post" routes
     public function post($path, $callback)
     {
         $this->routes["post"][$path] = $callback;
@@ -36,26 +34,26 @@ class Router
     // Validate the routes
     public function resolve()
     {
+        // Take the path, method, and callback
         $path = $this->request->getPath();
         $method = $this->request->method();
-        // Find the callback
         $callback = $this->routes[$method][$path] ?? false;
 
-        // If false, return not found
+        // If no $callback, return not found
         if (!$callback) {
             // Throw the NotFoundException
             throw new NotFoundException();
             // return $this->renderContent("<h1>Not found</h1>");
         }
 
-        // If string, render Views
+        // If $callback was a string, render Views
         if (is_string($callback)) {
             return Application::$app->view->renderView($callback);
         }
 
-        // If array, instance it [controller, method]
+        // If $callback was an array, instance it [controller, method], then set the action
         if (is_array($callback)) {
-            // Hey, the controller variable is an instance of Controller class.
+            // Hey, the $controller variable is an instance of Controller class.
             /** @var \app\core\Controller $controller */
 
             // Instance
