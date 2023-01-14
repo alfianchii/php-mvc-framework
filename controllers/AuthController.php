@@ -30,6 +30,7 @@ class AuthController extends Controller
 
             // Validate and login
             if ($loginForm->validate() && $loginForm->login()) {
+                Application::$app->session->setFlash("success", "Login was success!");
                 // Then redirect to "/"
                 return $response->redirect("/");
             }
