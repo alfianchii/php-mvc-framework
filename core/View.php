@@ -4,15 +4,16 @@ namespace app\core;
 
 class View
 {
+    // The title of page
     public string $title = "";
 
     // VIEWS
     // Render layouts + views
     public function renderView($view, $params = [])
     {
-        // Render the view
+        // Render the view first
         $viewContent = $this->renderOnlyView($view, $params);
-        // Render the layout
+        // Then render the layout
         $layoutContent = $this->layoutContent();
 
         // Replace the {{content}} inside $layoutContent, with $viewContent
@@ -22,6 +23,7 @@ class View
     // Render the content (not file)
     public function renderContent($viewContent)
     {
+        // Take the layout of content
         $layoutContent = $this->layoutContent();
 
         // Replace the {{content}} inside $layoutContent, with $viewContent
@@ -47,7 +49,9 @@ class View
     // Render views
     protected function renderOnlyView($view, $params)
     {
+        // Iterates the params
         foreach ($params as $key => $value) {
+            // Populates the $key into name of a variable using $$
             $$key = $value;
         }
 
