@@ -4,6 +4,7 @@ namespace app\core;
 
 abstract class Model
 {
+    // Rules
     public const RULE_REQUIRED = "required";
     public const RULE_EMAIL = "email";
     public const RULE_MIN = "min";
@@ -22,7 +23,7 @@ abstract class Model
         }
     }
 
-    // EVERY MODEL WOULD HAVE THEIR OWN RULES
+    // Every model would have their own rules
     abstract public function rules(): array;
 
     // User-friendly labels/attributes
@@ -31,16 +32,16 @@ abstract class Model
         return [];
     }
 
-    // Get labels (I think it came from the child)
+    // Get labels of a model
     public function getLabel($attribute)
     {
         return $this->labels()[$attribute] ?? $attribute;
     }
 
-    // Would contains all of the error(s)
+    // Accomodates all of the errors
     public array $errors = [];
 
-    // VALIDATE THE INPUTS
+    // Validate the inputs' form
     public function validate()
     {
         // ITERATES EVERY RULE'S ATTRIBUTES
@@ -121,11 +122,11 @@ abstract class Model
             }
         }
 
-        // If the $errors empty, return true. And vice versa.
+        // If the $errors was empty, return true. And vice versa.
         return empty($this->errors);
     }
 
-    // For add some error (needs $attribute and their $rule)
+    // For add some error from the rule (needs $attribute and their $rule)
     private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         // TAKE THE ERROR MESSAGE(s)
@@ -160,11 +161,13 @@ abstract class Model
         ];
     }
 
+    // If a model have an error
     public function hasError($attribute)
     {
         return $this->errors[$attribute] ?? false;
     }
 
+    // Get first error of a model
     public function getFirstError($attribute)
     {
         return $this->errors[$attribute][0] ?? false;
