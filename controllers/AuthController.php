@@ -31,8 +31,7 @@ class AuthController extends Controller
             // Validate and login
             if ($loginForm->validate() && $loginForm->login()) {
                 // Then redirect to "/"
-                $response->redirect("/");
-                return;
+                return $response->redirect("/");
             }
         }
 
