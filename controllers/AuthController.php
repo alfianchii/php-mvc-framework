@@ -8,9 +8,11 @@ use app\models\{User, LoginForm};
 
 class AuthController extends Controller
 {
+    // Constructor (when the class was instaced, run this constructor)
     // Restrict a page with middlewares
     public function __construct()
     {
+        // Restrict the "profile" page
         $this->registerMiddleware(new AuthMiddleware(["profile"]));
     }
 
@@ -18,22 +20,26 @@ class AuthController extends Controller
     // [AuthController::class, "login"]
     public function login(Request $request, Response $response)
     {
+        // Instances LoginForm.php model
         $loginForm = new LoginForm();
 
-        // When user trying to login ...
+        // If the request was POST,
         if ($request->isPost()) {
+            // Load inputs from the form
             $loginForm->loadData($request->getBody());
 
+            // Validate and login
             if ($loginForm->validate() && $loginForm->login()) {
+                // Then redirect to "/"
                 $response->redirect("/");
                 return;
             }
         }
 
-        // Set auth layout
+        // Otherwise, just set auth layout
         $this->setLayout("auth");
 
-        // Return layouts + views
+        // And eturn layouts + views
         return $this->render("login", [
             "model" => $loginForm
         ]);
@@ -42,15 +48,17 @@ class AuthController extends Controller
     // [AuthController::class, "register"]
     public function register(Request $request)
     {
+        // Instances User.php model
         $user = new User();
 
+        // If the request was POST,
         if ($request->isPost()) {
-            // Get the inputs from form, then load it
+            // Load inputs from the form
             $user->loadData($request->getBody());
 
-            // If validation is pass and also created an account,
-            // then set the flash and redirect it to home
+            // Validate and save
             if ($user->validate() && $user->save()) {
+                // Then set the flash and redirect it to home
                 Application::$app->session->setFlash("success", "Thanks for registering!");
                 Application::$app->response->redirect("/");
                 exit;
@@ -62,7 +70,7 @@ class AuthController extends Controller
             ]);
         }
 
-        // Set auth layout
+        // Otherwise, just set auth layout
         $this->setLayout("auth");
 
         // Return layouts + views
@@ -74,12 +82,15 @@ class AuthController extends Controller
     // [AuthController::class, "logout"]
     public function logout(Request $request, Response $response)
     {
+        // Remove user's session and redirect to home "/"
         Application::$app->logout();
         $response->redirect("/");
     }
 
+    // [AuthController::class, "profile"]
     public function profile()
     {
+        // Render profile.php
         return $this->render('profile');
     }
 }
