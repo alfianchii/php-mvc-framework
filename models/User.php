@@ -19,19 +19,19 @@ class User extends UserModel
     public string $password = "";
     public string $confirmPassword = "";
 
-    // Define the table's name
+    // Define the table's name of User's model
     public static function tableName(): string
     {
         return "users";
     }
 
-    // Implement primaryKey's method
+    // Implement primaryKey's method of User's model
     public static function primaryKey(): string
     {
         return "id";
     }
 
-    // The rule
+    // The rules of User's model
     public function rules(): array
     {
         return [
@@ -54,7 +54,19 @@ class User extends UserModel
         ];
     }
 
-    // Set the attributes
+    // UI friendly of User's model
+    public function labels(): array
+    {
+        return [
+            "firstname" => "First name",
+            "lastname" => "Last name",
+            "email" => "Email",
+            "password" => "Password",
+            "confirmPassword" => "Confirm password",
+        ];
+    }
+
+    // Set the attributes of User's model
     public function attributes(): array
     {
         return ["firstname", "lastname", "email", "password", "status"];
@@ -67,18 +79,6 @@ class User extends UserModel
         // Password encryption
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         return parent::save();
-    }
-
-    // Overwrite the labels() method
-    public function labels(): array
-    {
-        return [
-            "firstname" => "First name",
-            "lastname" => "Last name",
-            "email" => "Email",
-            "password" => "Password",
-            "confirmPassword" => "Confirm password",
-        ];
     }
 
     // Get user's name
