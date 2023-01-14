@@ -82,8 +82,9 @@ class AuthController extends Controller
     public function logout(Request $request, Response $response)
     {
         // Remove user's session and redirect to home "/"
+        Application::$app->session->setFlash("success", "You were logout.");
         Application::$app->logout();
-        $response->redirect("/");
+        return $response->redirect("/");
     }
 
     // [AuthController::class, "profile"]
