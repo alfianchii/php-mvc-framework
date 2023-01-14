@@ -41,22 +41,26 @@ class Request
     // Get the data from url (get) or form (post)
     public function getBody()
     {
+        // Accomodates the inputs
         $body = [];
 
+        // If the method was "get"
         if ($this->method() === "get") {
+            // Sanitize every chars
             foreach ($_GET as $key => $value) {
-                // Remove some invalid characters
                 $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
 
+        // If the method was "post"
         if ($this->method() === "post") {
+            // Sanitize every chars
             foreach ($_POST as $key => $value) {
-                // Remove some invalid characters
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
 
+        // Return the inputs (which was already sanitize)
         return $body;
     }
 }
