@@ -1,5 +1,5 @@
 <?php
-// The namespace
+
 namespace app\core;
 
 use app\core\exceptions\NotFoundException;
