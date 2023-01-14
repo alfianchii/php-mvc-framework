@@ -4,6 +4,7 @@ namespace app\core\form;
 
 class TextareaField extends BaseField
 {
+    // Set render to textarea field
     public function renderInput(): string
     {
         return sprintf(
