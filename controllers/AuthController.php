@@ -62,11 +62,6 @@ class AuthController extends Controller
                 Application::$app->session->setFlash("success", "Thanks for registering!");
                 return $response->redirect("/");
             }
-
-            // Return layouts + views + errors
-            return $this->render("register", [
-                "model" => $user
-            ]);
         }
 
         // Otherwise, just set auth layout
