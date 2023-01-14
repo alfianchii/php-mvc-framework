@@ -7,8 +7,10 @@ use app\core\Application;
 
 class Database
 {
+    // PDO
     public PDO $pdo;
 
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct(array $config)
     {
         // Database configuration
@@ -59,7 +61,7 @@ class Database
         if (!empty($newMigrations)) {
             $this->saveMigrations($newMigrations);
         } else {
-            // Otherwise,
+            // Otherwise, log a message
             $this->log("All migrations were applied.");
         }
     }
@@ -78,6 +80,7 @@ class Database
     // Get migrations from the table migrations
     public function getAppliedMigration()
     {
+        // SQL and execute
         $statement = $this->pdo->prepare("SELECT migration FROM migrations");
         $statement->execute();
 
@@ -90,12 +93,15 @@ class Database
     {
         // Split the array into string
         $str = implode(',', array_map(fn ($m) => "('$m')", $newMigrations));
+
+        // SQL and execute
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES 
             $str
         ");
         $statement->execute();
     }
 
+    // PDO's prepare
     public function prepare($sql)
     {
         return $this->pdo->prepare($sql);
