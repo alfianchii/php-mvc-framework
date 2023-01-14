@@ -1,6 +1,10 @@
 <?php
 
+// Annotate
 /** @var $model \app\models\User */
+
+// Set title of login page
+$this->title = "Login";
 
 ?>
 
