@@ -10,9 +10,10 @@ abstract class BaseField
     public Model $model;
     public string $attribute;
 
-    // Fill it out the properties
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct(Model $model, $attribute)
     {
+        // Fill out the properties
         $this->model = $model;
         $this->attribute = $attribute;
     }
@@ -20,7 +21,7 @@ abstract class BaseField
     // For the field. For example: textarea, input, etc.
     abstract public function renderInput(): string;
 
-    // Return the form's field(s)
+    // Return the form's field
     public function __toString()
     {
         return sprintf(
