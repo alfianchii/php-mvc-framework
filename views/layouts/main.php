@@ -91,7 +91,9 @@ use app\core\Application;
     <script>
     // Toast
     const myToast = document.getElementById("myToast");
-    const toast = new bootstrap.Toast(myToast);
+    const toast = new bootstrap.Toast(myToast, {
+        delay: 3000
+    });
     toast.show();
     </script>
 </body>
