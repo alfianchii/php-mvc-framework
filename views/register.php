@@ -1,6 +1,10 @@
 <?php
 
+// Annotate
 /** @var $model \app\models\User */
+
+// Set title of register page
+$this->title = "Register";
 
 ?>
 
