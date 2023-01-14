@@ -9,7 +9,7 @@ $this->title = "Login";
 ?>
 
 <section class="mt-5">
-    <h1>Login</h1>
+    <h1 class="mb-3">Login</h1>
     <?php $form = \app\core\form\Form::begin("", "POST"); ?>
 
     <?= $form->field($model, "email") ?>
