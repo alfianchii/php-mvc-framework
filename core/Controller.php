@@ -8,10 +8,10 @@ class Controller
 {
     // Whether the layout is auth.php or main.php (default)
     public string $layout = "main";
-    // For keeps the middleware
+    // For set the middleware
     public string $action = '';
 
-    // This is not just an array, but it's an array of Middleware's class.
+    // This is not just an array, but it's an array of BaseMiddleware's class.
     /**
      * @var \app\core\middlewares\BaseMiddleware[]
      */
@@ -35,7 +35,7 @@ class Controller
         $this->middlewares[] = $middleware;
     }
 
-    // Getter middlewares
+    // Get middlewares
     public function getMiddlewares(): array
     {
         return $this->middlewares;
