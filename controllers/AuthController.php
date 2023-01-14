@@ -45,7 +45,7 @@ class AuthController extends Controller
     }
 
     // [AuthController::class, "register"]
-    public function register(Request $request)
+    public function register(Request $request, Response $response)
     {
         // Instances User.php model
         $user = new User();
@@ -59,7 +59,7 @@ class AuthController extends Controller
             if ($user->validate() && $user->save()) {
                 // Then set the flash and redirect it to home
                 Application::$app->session->setFlash("success", "Thanks for registering!");
-                return Application::$app->response->redirect("/");
+                return $response->redirect("/");
             }
 
             // Return layouts + views + errors
