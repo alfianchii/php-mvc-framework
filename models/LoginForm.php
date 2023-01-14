@@ -12,11 +12,11 @@ doesn't map anything to the database.
 
 class LoginForm extends Model
 {
-    // Properties for login (to take the value from form)
+    // Properties of login form
     public string $email = "";
     public string $password = "";
 
-    // The rules for login
+    // The rules of LoginForm's model
     public function rules(): array
     {
         return [
@@ -25,6 +25,7 @@ class LoginForm extends Model
         ];
     }
 
+    // UI friendly of LoginForm's model
     public function labels(): array
     {
         return [
