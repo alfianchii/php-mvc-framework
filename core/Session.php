@@ -7,6 +7,7 @@ class Session
     // Flash key
     protected const FLASH_KEY = "flash_messages";
 
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct()
     {
         // Start the session
@@ -20,6 +21,7 @@ class Session
             $flashMessage["remove"] = true;
         }
 
+        // Set the flash into session
         $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
 
@@ -68,6 +70,7 @@ class Session
             }
         }
 
+        // Set the flash into session
         $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
 }
