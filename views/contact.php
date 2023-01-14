@@ -1,5 +1,6 @@
 <?php
 
+// Annotatings
 /** @var $this \app\core\View */
 /** @var $model \app\models\ContactForm */
 
