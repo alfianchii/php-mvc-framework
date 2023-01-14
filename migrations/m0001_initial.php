@@ -4,6 +4,7 @@ use app\core\Application;
 
 class m0001_initial
 {
+    // Create the table
     public function up()
     {
         $db = Application::$app->db;
@@ -20,6 +21,7 @@ class m0001_initial
         $db->pdo->exec($SQL);
     }
 
+    // Drop the table
     public function down()
     {
         $db = Application::$app->db;
