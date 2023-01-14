@@ -12,8 +12,10 @@ $this->title = "Home";
 
 <h1>Home</h1>
 
-<?php if (Application::isGuest()) : ?>
-<h3>Welcome!</h3>
-<?php else : ?>
-<h3>Welcome, <?= $name ?>!</h3>
-<?php endif; ?>
+<section class="mt-3">
+    <?php if (Application::isGuest()) : ?>
+    <h3>Welcome!</h3>
+    <?php else : ?>
+    <h3>Welcome, <?= $name ?>!</h3>
+    <?php endif; ?>
+</section>

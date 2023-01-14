@@ -61,7 +61,7 @@ use app\core\Application;
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container mt-4">
         <?php if (Application::$app->session->getFlash("success")) : ?>
         <div class="position-absolute bottom-0 end-0 mb-3 me-3">
             <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
