@@ -6,7 +6,7 @@ use app\core\Model;
 
 class ContactForm extends Model
 {
-    // Properties of form
+    // Properties of contact form
     public string $subject = "";
     public string $email = "";
     public string $body = "";
