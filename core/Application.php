@@ -20,6 +20,7 @@ class Application
     public ?UserModel $user;
     public View $view;
 
+    // Constructor (when the class was instaced, run this constructor)
     public function __construct($rootPath, array $config)
     {
         // Fill out the properties
@@ -36,12 +37,14 @@ class Application
         /*
             Noting, we should never use any class inside the core which is outside the core.
         */
-        // Get the user's session if exists
+        // Get the user's session if exists, 
         $primaryValue = $this->session->get("user");
         if ($primaryValue) {
+            // Then load the user based on session
             $primaryKey = $this->userClass::primaryKey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
         } else {
+            // Otherwise set user to null
             $this->user = null;
         }
     }
@@ -52,19 +55,19 @@ class Application
     // Running the application
     public function run()
     {
+        // If in "try" occurs an error, just throw the error to "catch"
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
-            // Set the status code
+            // Set the status code and render view of error
             $this->response->setStatusCode($e->getCode());
-            // Render view of error
             echo $this->view->renderView("_error", [
                 "exception" => $e
             ]);
         }
     }
 
-    // Getter and setter
+    // Getter and setter of Controller
     public function getController(): \app\core\Controller
     {
         return $this->controller;
@@ -93,6 +96,7 @@ class Application
     // User's logout
     public function logout()
     {
+        // Set user to null and remove the session of "user"
         $this->user = null;
         $this->session->remove("user");
     }
@@ -100,6 +104,7 @@ class Application
     // If the user was guest
     public static function isGuest()
     {
+        // Whether user was null
         return !self::$app->user;
     }
 }
