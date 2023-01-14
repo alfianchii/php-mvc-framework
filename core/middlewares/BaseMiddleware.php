@@ -4,6 +4,6 @@ namespace app\core\middlewares;
 
 abstract class BaseMiddleware
 {
-    // Execute the middlewares
+    // Every middlewares would have its own execute
     abstract public function execute();
 }
