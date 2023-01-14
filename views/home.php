@@ -10,9 +10,9 @@ $this->title = "Home";
 
 ?>
 
-<h1>Home</h1>
+<h1 class="mb-3">Home</h1>
 
-<section class="mt-3">
+<section>
     <?php if (Application::isGuest()) : ?>
     <h3>Welcome!</h3>
     <?php else : ?>
