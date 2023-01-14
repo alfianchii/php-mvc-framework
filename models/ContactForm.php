@@ -6,10 +6,12 @@ use app\core\Model;
 
 class ContactForm extends Model
 {
+    // Properties of form
     public string $subject = "";
     public string $email = "";
     public string $body = "";
 
+    // The rules of ContactForm's model
     public function rules(): array
     {
         return [
@@ -19,6 +21,7 @@ class ContactForm extends Model
         ];
     }
 
+    // UI friendly of ContactForm's model
     public function labels(): array
     {
         return [
@@ -28,6 +31,7 @@ class ContactForm extends Model
         ];
     }
 
+    // Send the inputs of contact form
     public function send()
     {
         return true;
