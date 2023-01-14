@@ -22,7 +22,7 @@ use app\core\Application;
 <body>
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">App</a>
+            <a class="navbar-brand" target="_blank" href="https://github.com/alfianchii/mvc-framework">App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,7 +53,8 @@ use app\core\Application;
                         <a class="nav-link" aria-current="page" href="/profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Welcome, <?= Application::$app->user->getDisplayName() ?></a>
+                        <a class="nav-link" href="/logout">Welcome, <?= Application::$app->user->getDisplayName() ?>
+                            (Logout)</a>
                     </li>
                 </ul>
                 <?php endif; ?>
