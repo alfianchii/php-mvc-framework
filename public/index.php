@@ -1,20 +1,17 @@
 <?php
 // Importing
 use app\controllers\{SiteController, AuthController};
-use alfianchii\phpmvc\Application;
-use app\models\User;
-use Dotenv\Dotenv;
 
 // Include autoload
 require_once __DIR__ . "/../vendor/autoload.php";
 
 // Import phpdotenv Package
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 // Configuration for the databas
 $config = [
-    "userClass" => User::class,
+    "userClass" => app\models\User::class,
     "db" => [
         "dsn" => $_ENV["DB_DSN"],
         "user" => $_ENV["DB_USER"],
@@ -23,7 +20,7 @@ $config = [
 ];
 
 // App instance
-$app = new Application(dirname(__DIR__), $config);
+$app = new alfianchii\phpmvc\Application(dirname(__DIR__), $config);
 
 // Routes
 $app->router->get('/', [SiteController::class, "home"]);
