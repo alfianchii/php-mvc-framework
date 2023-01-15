@@ -22,6 +22,11 @@ $config = [
 // App instance
 $app = new alfianchii\phpmvc\Application(dirname(__DIR__), $config);
 
+// Event listener
+// $app->on(alfianchii\phpmvc\Application::EVENT_BEFORE_REQUEST, function () {
+//     echo "Before request ...";
+// });
+
 // Routes
 $app->router->get('/', [SiteController::class, "home"]);
 $app->router->get('/contact', [SiteController::class, "contact"]);

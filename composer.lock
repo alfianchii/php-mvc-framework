@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0574606023c55afdb2bdf927ae06f78",
+    "content-hash": "779979be6e689331bdc0a925008dcbe2",
     "packages": [
         {
             "name": "alfianchii/php-mvc-core",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alfianchii/alfianchii-php-mvc-core.git",
-                "reference": "83a3811754dac1dff856bdd3143e3e393c36d5e3"
+                "reference": "a09d3628ee928d5dd2da7a5df9ebeacc84560ead"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alfianchii/alfianchii-php-mvc-core/zipball/83a3811754dac1dff856bdd3143e3e393c36d5e3",
-                "reference": "83a3811754dac1dff856bdd3143e3e393c36d5e3",
+                "url": "https://api.github.com/repos/alfianchii/alfianchii-php-mvc-core/zipball/a09d3628ee928d5dd2da7a5df9ebeacc84560ead",
+                "reference": "a09d3628ee928d5dd2da7a5df9ebeacc84560ead",
                 "shasum": ""
             },
             "type": "library",
@@ -36,9 +36,9 @@
             "description": "The core folder of php-mvc-framework.",
             "support": {
                 "issues": "https://github.com/alfianchii/alfianchii-php-mvc-core/issues",
-                "source": "https://github.com/alfianchii/alfianchii-php-mvc-core/tree/v1.0.1"
+                "source": "https://github.com/alfianchii/alfianchii-php-mvc-core/tree/v1.0.2"
             },
-            "time": "2023-01-15T06:48:56+00:00"
+            "time": "2023-01-15T08:38:43+00:00"
         },
         {
             "name": "graham-campbell/result-type",
