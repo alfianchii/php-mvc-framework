@@ -1,7 +1,6 @@
 {
-	"name": "alfian/mvc-framework",
+	"name": "alfian/php-mvc-framework",
 	"description": "Some basics of MVC's concept.",
-	"type": "library",
 	"authors": [
 		{
 			"name": "alfianchii",
