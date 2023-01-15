@@ -15,9 +15,9 @@ Download the latest release of core package from the [core releases page](https:
 ### Installation
 
 - Clone the repository `git clone https://github.com/alfianchii/php-mvc-framework`
-- Create database scheme
-- In the root folder, create `.env` which is based from `.env.example` file and adjust database parameters (including scheme name)
+- Create database scheme. For example, create a database which named `phpmvc_project`
+- In the project root folder, create `.env` which is based from `.env.example` file and adjust database parameters (including scheme name)
 - Install packages using Composer. For example run `composer install`
-- From the project root directory, migrate the migrations by executing `php migrations.php`
+- From the project root folder, migrate the migrations by executing `php migrations.php`
 - Go to `public` folder
 - Run server with `php -S localhost:8080` command and open `http://localhost:8080` in your favourite browser
