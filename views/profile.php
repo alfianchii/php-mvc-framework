@@ -1,7 +1,7 @@
 <?php
 
 // Annotate
-/** @var $this \app\core\View */
+/** @var $this \alfianchii\phpmvc\View */
 
 // Set title
 $this->title = "Contact";

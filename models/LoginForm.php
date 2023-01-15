@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use app\core\Application;
-use app\core\Model;
+use alfianchii\phpmvc\Application;
+use alfianchii\phpmvc\Model;
 
 /*
 Just to Model, not DbModel. Because it

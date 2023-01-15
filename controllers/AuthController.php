@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\core\{Application, Controller, Request, Response};
-use app\core\middlewares\AuthMiddleware;
+use alfianchii\phpmvc\{Application, Controller, Request, Response};
+use alfianchii\phpmvc\middlewares\AuthMiddleware;
 use app\models\{User, LoginForm};
 
 class AuthController extends Controller

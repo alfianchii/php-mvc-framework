@@ -11,7 +11,7 @@ $this->title = "Register";
 <section class="mt-5">
     <h1 class="mb-3">Create an account</h1>
 
-    <?php $form = \app\core\form\Form::begin("", "POST"); ?>
+    <?php $form = \alfianchii\phpmvc\form\Form::begin("", "POST"); ?>
 
     <div class="row">
         <div class="col">
@@ -27,5 +27,5 @@ $this->title = "Register";
     <?= $form->field($model, "confirmPassword")->passwordField() ?>
     <button type="submit" class="btn btn-primary">Submit</button>
 
-    <?php \app\core\form\Form::end(); ?>
+    <?php \alfianchii\phpmvc\form\Form::end(); ?>
 </section>

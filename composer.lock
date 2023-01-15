@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1148b69938f4707cf85d6be358e12894",
+    "content-hash": "b0574606023c55afdb2bdf927ae06f78",
     "packages": [
+        {
+            "name": "alfianchii/php-mvc-core",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alfianchii/alfianchii-php-mvc-core.git",
+                "reference": "83a3811754dac1dff856bdd3143e3e393c36d5e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alfianchii/alfianchii-php-mvc-core/zipball/83a3811754dac1dff856bdd3143e3e393c36d5e3",
+                "reference": "83a3811754dac1dff856bdd3143e3e393c36d5e3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "alfianchii\\phpmvc\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "alfianchii",
+                    "email": "pianaee379@gmail.com"
+                }
+            ],
+            "description": "The core folder of php-mvc-framework.",
+            "support": {
+                "issues": "https://github.com/alfianchii/alfianchii-php-mvc-core/issues",
+                "source": "https://github.com/alfianchii/alfianchii-php-mvc-core/tree/v1.0.1"
+            },
+            "time": "2023-01-15T06:48:56+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.1.0",

@@ -1,14 +1,15 @@
 <?php
 // Importing
 use app\controllers\{SiteController, AuthController};
-use app\core\Application;
+use alfianchii\phpmvc\Application;
 use app\models\User;
+use Dotenv\Dotenv;
 
 // Include autoload
 require_once __DIR__ . "/../vendor/autoload.php";
 
 // Import phpdotenv Package
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 // Configuration for the databas

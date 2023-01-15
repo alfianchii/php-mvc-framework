@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\core\{Application, Controller, Request, Response};
+use alfianchii\phpmvc\{Application, Controller, Request, Response};
 use app\models\ContactForm;
 
 class SiteController extends Controller

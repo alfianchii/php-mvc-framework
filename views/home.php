@@ -3,7 +3,7 @@
 // Annotating
 /** @var $name \app\controllers\SiteController */
 
-use app\core\Application;
+use alfianchii\phpmvc\Application;
 
 // Set the title of home page
 $this->title = "Home";
@@ -14,8 +14,8 @@ $this->title = "Home";
 
 <section>
     <?php if (Application::isGuest()) : ?>
-    <h3>Welcome!</h3>
+        <h3>Welcome!</h3>
     <?php else : ?>
-    <h3>Welcome, <?= $name ?>!</h3>
+        <h3>Welcome, <?= $name ?>!</h3>
     <?php endif; ?>
 </section>
