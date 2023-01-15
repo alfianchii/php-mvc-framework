@@ -4,7 +4,7 @@
 
 ### Noting, the only purpose of this framework is pure educational to give you all some knowledges. It's not recommended to use this framework on any of your production websites.
 
-<p>The core package: <a href="https://github.com/alfianchii/alfianchii-php-mvc-core">here</a></p>
+<p>The core package: <a target="_blank" href="https://github.com/alfianchii/alfianchii-php-mvc-core">here</a></p>
 
 ---
 
